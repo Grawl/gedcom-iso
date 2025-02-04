@@ -1,0 +1,32 @@
+{
+  "name": "gedcom-iso",
+  "description": "GEDCOM parser and stringifier",
+  "version": "0.1.0",
+  "type": "module",
+  "volta": {
+    "node": "23.7.0"
+  },
+  "scripts": {
+    "start": "node index.ts"
+  },
+  "dependencies": {
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/node": "^22.13.1",
+    "fp-ts": "^2.16.9",
+    "monocle-ts": "^2.3.13",
+    "parse-gedcom": "^2.0.1",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "jiti": "^2.4.2",
+    "prettier": "3.4.2",
+    "typescript-eslint": "^8.23.0",
+    "vitest": "^3.0.5"
+  }
+}

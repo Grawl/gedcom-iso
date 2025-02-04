@@ -1,0 +1,10 @@
+{
+	"editorconfig": true,
+	"singleQuote": true,
+	"quoteProps": "consistent",
+	"bracketSameLine": false,
+	"bracketSpacing": true,
+	"arrowParens": "avoid",
+	"trailingComma": "all",
+	"semi": false
+}
