@@ -24,4 +24,4 @@ jobs:
     - name: 'Install Deps'
       run: npm install
     - name: 'Test'
-      run: npx vitest --coverage.enabled true
+      run: npx vitest
