@@ -13,8 +13,8 @@
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/node": "^22.13.1",
     "fp-ts": "^2.16.9",
+    "gedcom-latest": "^3.0.0",
     "monocle-ts": "^2.3.13",
-    "parse-gedcom": "^2.0.1",
     "typescript": "^5.7.3"
   },
   "devDependencies": {

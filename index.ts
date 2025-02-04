@@ -1,5 +1,5 @@
-import { tokenize } from 'parse-gedcom'
-import type { Line } from 'parse-gedcom/dist/lib/tokenize.js'
+import { tokenize } from 'gedcom-latest'
+import type { Line } from 'gedcom-latest/dist/lib/tokenize.js'
 import { Iso } from 'monocle-ts'
 import { pipe } from 'fp-ts/function'
 
