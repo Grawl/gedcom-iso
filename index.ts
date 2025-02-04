@@ -33,3 +33,5 @@ export const gedcomIso = new Iso<string, Line[]>(
 )
 
 export const thereAndBack = (gedcom: string): string => pipe(gedcom, gedcomIso.to, gedcomIso.from)
+
+export const foo = 'bar'
