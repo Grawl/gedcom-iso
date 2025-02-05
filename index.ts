@@ -1,12 +1,11 @@
 import { tokenize } from 'gedcom-latest'
 import type { Line } from 'gedcom-latest/dist/lib/tokenize.js'
 import { Iso } from 'monocle-ts'
-import { pipe } from 'fp-ts/function'
 
 export const removeSpacesFromEndOfLines = (input: string): string =>
 	input.replace(/\s*\n/gm, '\n').trim()
 
-export const gedcomIso = new Iso<string, Line[]>(
+export const gedcomLineIso = new Iso<string, Line[]>(
 	gedcom =>
 		removeSpacesFromEndOfLines(gedcom)
 			.trim()
@@ -31,5 +30,3 @@ export const gedcomIso = new Iso<string, Line[]>(
 			)
 			.join('\n'),
 )
-
-export const thereAndBack = (gedcom: string): string => pipe(gedcom, gedcomIso.to, gedcomIso.from)

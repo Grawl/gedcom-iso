@@ -1,17 +1,20 @@
+import { pipe } from 'fp-ts/function'
 import { readFileSync } from 'fs'
 import { readdirSync } from 'node:fs'
 import { describe, expect, test } from 'vitest'
-import { thereAndBack, removeSpacesFromEndOfLines } from './index.js'
+import { removeSpacesFromEndOfLines, gedcomLineIso } from './index.js'
 
 // https://github.com/findmypast/gedcom-samples
 const folder = './samples/'
 
-describe('thereAndBack', () => {
+describe('there and back', () => {
 	readdirSync(folder).forEach(sample => {
-		test(`thereAndBack ${sample}`, () => {
+		test(`tokenize ${sample}`, () => {
 			const fileBuffer = readFileSync(`${folder}/${sample}`)
 			const text = fileBuffer.toString()
-			expect(thereAndBack(text)).toBe(removeSpacesFromEndOfLines(text))
+			expect(pipe(text, gedcomLineIso.to, gedcomLineIso.from)).toBe(
+				removeSpacesFromEndOfLines(text),
+			)
 		})
 	})
 })
