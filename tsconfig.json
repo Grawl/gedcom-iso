@@ -15,13 +15,17 @@
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
 		/* If transpiling with TypeScript: */
-		"module": "NodeNext",
+		"module": "ES2022",
 		"sourceMap": true,
 		/* If your code doesn't run in the DOM: */
 		"lib": [
 			"es2022"
 		],
 		//
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"moduleResolution": "bundler",
+		"paths": {
+			"@/*": ["./*"]
+		}
 	}
 }

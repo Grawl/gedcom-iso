@@ -1,9 +1,11 @@
 import globals from 'globals'
+
 import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
 	{
@@ -19,6 +21,18 @@ export default tseslint.config(
 	},
 	eslint.configs.recommended,
 	tseslint.configs.strictTypeChecked,
+	{
+		rules: {
+			'@typescript-eslint/consistent-type-imports': [
+				'error',
+				{
+					disallowTypeAnnotations: false,
+					fixStyle: 'separate-type-imports',
+					prefer: 'type-imports',
+				},
+			],
+		},
+	},
 	prettierConfig,
 	prettierPlugin,
 	{
@@ -38,6 +52,25 @@ export default tseslint.config(
 					argsIgnorePattern: '^_',
 				},
 			],
+		},
+	},
+	{
+		plugins: {
+			'simple-import-sort': simpleImportSort,
+		},
+		rules: {
+			'simple-import-sort/imports': [
+				'error',
+				{
+					groups: [
+						['^node', 'globals'],
+						['^@eslint', '^eslint', 'typescript-eslint'],
+						['^@?\\w'],
+						['^[./]'],
+					],
+				},
+			],
+			'simple-import-sort/exports': 'error',
 		},
 	},
 )
