@@ -1,13 +1,17 @@
 import globals from 'globals'
 
-import eslint from '@eslint/js'
+import ESLint from '@eslint/js'
 import prettierConfig from 'eslint-config-prettier'
+import ESLintPluginImportX from 'eslint-plugin-import-x'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
-import tseslint from 'typescript-eslint'
+import {
+	config as TypeScriptESLintConfig,
+	configs as TypeScriptESLintConfigs,
+} from 'typescript-eslint'
 
-export default tseslint.config(
+export default TypeScriptESLintConfig(
 	{
 		languageOptions: {
 			parserOptions: {
@@ -19,8 +23,8 @@ export default tseslint.config(
 			},
 		},
 	},
-	eslint.configs.recommended,
-	tseslint.configs.strictTypeChecked,
+	ESLint.configs.recommended,
+	TypeScriptESLintConfigs.strictTypeChecked,
 	{
 		rules: {
 			'@typescript-eslint/consistent-type-imports': [
@@ -35,7 +39,19 @@ export default tseslint.config(
 	},
 	prettierConfig,
 	prettierPlugin,
+	ESLintPluginImportX.flatConfigs.recommended,
+	ESLintPluginImportX.flatConfigs.warnings,
+	ESLintPluginImportX.flatConfigs.typescript,
 	{
+		files: ['**/*.ts'],
+		rules: {
+			'no-unused-vars': 'off',
+			'import-x/newline-after-import': 'warn',
+			'import-x/no-rename-default': 'off',
+		},
+	},
+	{
+		files: ['**/*.ts'],
 		plugins: {
 			'unused-imports': unusedImportsPlugin,
 		},
@@ -55,6 +71,7 @@ export default tseslint.config(
 		},
 	},
 	{
+		files: ['**/*.ts'],
 		plugins: {
 			'simple-import-sort': simpleImportSort,
 		},
