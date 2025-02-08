@@ -1,7 +1,5 @@
 {
 	"compilerOptions": {
-		//  "extends": "@total-typescript/tsconfig/tsc/no-dom/app.json",
-		/* Base Options: */
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"target": "es2022",
@@ -10,22 +8,15 @@
 		"moduleDetection": "force",
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
-		/* Strictness */
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
-		/* If transpiling with TypeScript: */
-		"module": "ES2022",
+		"module": "NodeNext",
 		"sourceMap": true,
-		/* If your code doesn't run in the DOM: */
-		"lib": [
-			"es2022"
-		],
-		//
+		"lib": ["ES2024"],
 		"strictNullChecks": true,
-		"moduleResolution": "bundler",
-		"paths": {
-			"@/*": ["./*"]
-		}
+		"moduleResolution": "node16",
+		"rootDir": ".",
+		"allowImportingTsExtensions": true
 	}
 }

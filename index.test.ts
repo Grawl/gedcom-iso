@@ -1,13 +1,12 @@
-import { readdirSync } from 'node:fs'
+import { strictEqual } from 'node:assert'
+import { readdirSync, readFileSync } from 'node:fs'
+import { describe, test } from 'node:test'
 
-import { pipe } from 'fp-ts/function'
-import { readFileSync } from 'fs'
-import { describe, expect, test } from 'vitest'
+import { pipe } from 'fp-ts/lib/function.js'
 
-import { gedcomLineIso } from './lib/gedcomLineIso'
-import { gedcomParseIso } from './lib/gedcomParseIso'
-
-import { removeSpacesFromEndOfLines } from '@/lib/utils'
+import { gedcomLineIso } from './lib/gedcomLineIso.ts'
+import { gedcomParseIso } from './lib/gedcomParseIso.ts'
+import { removeSpacesFromEndOfLines } from './lib/utils.ts'
 
 // https://github.com/findmypast/gedcom-samples
 const folder = './samples/'
@@ -18,10 +17,10 @@ describe('there and back', () => {
 		const text = fileBuffer.toString()
 		const cleanText = removeSpacesFromEndOfLines(text)
 		test(`tokenize ${sample}`, () => {
-			expect(pipe(text, gedcomLineIso.to, gedcomLineIso.from)).toBe(cleanText)
+			strictEqual(pipe(text, gedcomLineIso.to, gedcomLineIso.from), cleanText)
 		})
 		test(`parse ${sample}`, () => {
-			expect(pipe(text, gedcomParseIso.to, gedcomParseIso.from)).toBe(cleanText)
+			strictEqual(pipe(text, gedcomParseIso.to, gedcomParseIso.from), cleanText)
 		})
 	})
 })

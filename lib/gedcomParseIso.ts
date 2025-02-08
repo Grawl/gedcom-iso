@@ -1,11 +1,11 @@
 import { parse } from 'gedcom-latest'
-import type { Line } from 'gedcom-latest/dist/lib/tokenize'
+import type { Line } from 'gedcom-latest/dist/lib/tokenize.d.ts'
 import { Iso } from 'monocle-ts'
 import type { Parent } from 'unist'
 import { z } from 'zod'
 
-import { gedcomLineIso } from '@/lib/gedcomLineIso'
-import { removeSpacesFromEndOfLines } from '@/lib/utils'
+import { gedcomLineIso } from './gedcomLineIso.ts'
+import { removeSpacesFromEndOfLines } from './utils.ts'
 
 const baseNodeSchema = z
 	.object({
@@ -34,7 +34,7 @@ const nodeSchema: z.ZodType<Node> = baseNodeSchema
 
 const splitLineToContinued = (line: Line): Line[] => {
 	const { level, value, ...restLine } = line
-	if (value === undefined) return [line]
+	if (value === undefined || !value.includes('\n')) return [line]
 	const [first, ...rest] = value.split('\n')
 	return [
 		{
@@ -55,11 +55,10 @@ const splitLineToContinued = (line: Line): Line[] => {
 const itemToLine = (
 	{ type, value, data: { xref_id, pointer }, children }: Node,
 	level = 0,
-): Line[] => {
-	const line = { level: level, tag: type as Line['tag'], xref_id, pointer, value }
-	const lines = value?.includes('\n') ? splitLineToContinued(line) : [line]
-	return [...lines, ...children.flatMap(child => itemToLine(child, level + 1))]
-}
+): Line[] => [
+	...splitLineToContinued({ level: level, tag: type as Line['tag'], xref_id, pointer, value }),
+	...children.flatMap(child => itemToLine(child, level + 1)),
+]
 
 export const gedcomParseIso = new Iso<string, Parent>(
 	gedcom => parse(removeSpacesFromEndOfLines(gedcom).trim()),

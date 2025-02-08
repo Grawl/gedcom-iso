@@ -37,6 +37,12 @@ export default TypeScriptESLintConfig(
 			],
 		},
 	},
+	{
+		files: ['**/*.test.ts'],
+		rules: {
+			'@typescript-eslint/no-floating-promises': 'off',
+		},
+	},
 	prettierConfig,
 	prettierPlugin,
 	ESLintPluginImportX.flatConfigs.recommended,
