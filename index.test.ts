@@ -12,15 +12,26 @@ import { removeSpacesFromEndOfLines } from './lib/utils.ts'
 const folder = './samples/'
 
 describe('there and back', () => {
-	readdirSync(folder).forEach(sample => {
-		const fileBuffer = readFileSync(`${folder}/${sample}`)
+	readdirSync(folder).forEach(fileName => {
+		const fileBuffer = readFileSync(`${folder}/${fileName}`)
 		const text = fileBuffer.toString()
 		const cleanText = removeSpacesFromEndOfLines(text)
-		test(`tokenize ${sample}`, () => {
+		test(`tokenize ${fileName}`, () => {
 			strictEqual(pipe(text, gedcomLineIso.to, gedcomLineIso.from), cleanText)
 		})
-		test(`parse ${sample}`, () => {
+		test(`parse ${fileName}`, () => {
 			strictEqual(pipe(text, gedcomParseIso.to, gedcomParseIso.from), cleanText)
+		})
+	})
+})
+
+// HELP too large snapshots :( 12 MB
+describe('snap', () => {
+	readdirSync(folder).forEach(fileName => {
+		const fileBuffer = readFileSync(`${folder}/${fileName}`)
+		const text = fileBuffer.toString()
+		test(`snapshot ${fileName}`, t => {
+			t.assert.snapshot(gedcomParseIso.to(text))
 		})
 	})
 })

@@ -1,13 +1,13 @@
 import { parse } from 'gedcom-latest'
 import type { Line } from 'gedcom-latest/dist/lib/tokenize.d.ts'
 import { Iso } from 'monocle-ts'
-import type { Parent } from 'unist'
 import { z } from 'zod'
 
 import { gedcomLineIso } from './gedcomLineIso.ts'
+import type { RootTag } from './schema/root.ts'
 import { removeSpacesFromEndOfLines } from './utils.ts'
 
-const baseNodeSchema = z
+const baseTagSchema = z
 	.object({
 		type: z.string(),
 		value: z.string().optional(),
@@ -22,13 +22,13 @@ const baseNodeSchema = z
 	})
 	.strict()
 
-type Node = z.infer<typeof baseNodeSchema> & {
-	children: Node[]
+type Tag = z.infer<typeof baseTagSchema> & {
+	children: Tag[]
 }
 
-const nodeSchema: z.ZodType<Node> = baseNodeSchema
+const tagSchema: z.ZodType<Tag> = baseTagSchema
 	.extend({
-		children: z.lazy(() => nodeSchema.array()),
+		children: z.lazy(() => tagSchema.array()),
 	})
 	.strict()
 
@@ -52,23 +52,25 @@ const splitLineToContinued = (line: Line): Line[] => {
 	]
 }
 
-const itemToLine = (
-	{ type, value, data: { xref_id, pointer }, children }: Node,
+const tagToLine = (
+	{ type, value, data: { xref_id, pointer }, children }: Tag,
 	level = 0,
 ): Line[] => [
 	...splitLineToContinued({ level: level, tag: type as Line['tag'], xref_id, pointer, value }),
-	...children.flatMap(child => itemToLine(child, level + 1)),
+	...children.flatMap(child => tagToLine(child, level + 1)),
 ]
 
-export const gedcomParseIso = new Iso<string, Parent>(
-	gedcom => parse(removeSpacesFromEndOfLines(gedcom).trim()),
-	parsed => {
-		const lines: Line[] = parsed.children.flatMap(node => {
-			const parsed = nodeSchema.safeParse(node)
+const stringToParsed = (string: string): RootTag =>
+	parse(removeSpacesFromEndOfLines(string).trim()) as RootTag
+
+const parsedToString = ({ children }: RootTag) =>
+	gedcomLineIso.from(
+		children.flatMap(unistNode => {
+			const parsed = tagSchema.safeParse(unistNode)
 			if (parsed.error) throw parsed.error
 			const { type, value, data, children } = parsed.data
-			return itemToLine({ type, value, data, children })
-		})
-		return gedcomLineIso.from(lines)
-	},
-)
+			return tagToLine({ type, value, data, children })
+		}),
+	)
+
+export const gedcomParseIso = new Iso<string, RootTag>(stringToParsed, parsedToString)

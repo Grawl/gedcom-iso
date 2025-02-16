@@ -8,9 +8,11 @@
 	},
 	"scripts": {
 		"test": "node index.test.ts",
+		"test:update-snapshot": "node --test-update-snapshots index.test.ts",
 		"lint:types": "tsc --noEmit",
-		"lint": "npm run lint:types && eslint .",
-		"lint:fix": "npm run lint -- --fix"
+		"lint:eslint": "eslint .",
+		"lint:eslint:fix": "npm run lint:eslint -- --fix",
+		"lint": "npm run lint:types && npm run lint:eslint"
 	},
 	"dependencies": {
 		"@total-typescript/tsconfig": "^1.0.4",
