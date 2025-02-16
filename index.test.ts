@@ -4,9 +4,9 @@ import { describe, test } from 'node:test'
 
 import { pipe } from 'fp-ts/lib/function.js'
 
-import { gedcomLineIso } from './lib/gedcomLineIso.ts'
-import { gedcomParseIso } from './lib/gedcomParseIso.ts'
-import { removeSpacesFromEndOfLines } from './lib/utils.ts'
+import { gedcomLineIso } from '#lib/gedcomLineIso'
+import { gedcomParseIso } from '#lib/gedcomParseIso'
+import { removeSpacesFromEndOfLines } from '#lib/utils'
 
 // https://github.com/findmypast/gedcom-samples
 const folder = './samples/'

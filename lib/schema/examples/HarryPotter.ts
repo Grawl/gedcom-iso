@@ -1,6 +1,6 @@
-import type { Child, Family } from '../family.ts'
-import type { Individual } from '../individual.ts'
-import type { RootTag } from '../root.ts'
+import type { Child, Family } from '#lib/schema/family'
+import type { Individual } from '#lib/schema/individual'
+import type { RootTag } from '#lib/schema/root'
 
 const ArcturusBlack: Individual = {
 	type: 'INDI',

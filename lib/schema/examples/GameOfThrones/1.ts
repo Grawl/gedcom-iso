@@ -1,7 +1,6 @@
-import type { RootChild, Submitter } from '../../root.ts'
-
-import type { Gedcom, Head } from '../../head.js'
-import type { Individual } from '../../individual.ts'
+import type { Gedcom, Head } from '#lib/schema/head'
+import type { Individual } from '#lib/schema/individual'
+import type { RootChild, Submitter } from '#lib/schema/root'
 
 const gedcom: Gedcom = {
 	type: 'GEDC',

@@ -1,4 +1,4 @@
-import type { ExtraTag } from './common.ts'
+import type { ExtraTag } from './common'
 
 export type Tag<
 	Type,

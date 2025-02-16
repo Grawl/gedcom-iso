@@ -1,8 +1,8 @@
-import type { Address, Name } from './common.ts'
-import { type Family } from './family.ts'
-import type { Head } from './head.ts'
-import { type Individual } from './individual.ts'
-import type { IdTag, Tag } from './tags.ts'
+import type { Address, Name } from './common'
+import { type Family } from './family'
+import type { Head } from './head'
+import { type Individual } from './individual'
+import type { IdTag, Tag } from './tags'
 
 export type Submitter = IdTag<'SUBM', 'SUBMITTER', Name | Address>
 

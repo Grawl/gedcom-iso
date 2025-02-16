@@ -1,4 +1,4 @@
-import type { RootChild } from '../../root.ts'
+import type { RootChild } from '#lib/schema/root'
 
 export const part6: RootChild[] = [
 	{

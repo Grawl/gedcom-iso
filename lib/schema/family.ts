@@ -1,5 +1,5 @@
 import type { Change, GedEvent, Reference } from './common.js'
-import type { IdTag, PointerTag, Tag } from './tags.ts'
+import type { IdTag, PointerTag, Tag } from './tags'
 
 export type Husband = PointerTag<'HUSB', 'HUSBAND'>
 

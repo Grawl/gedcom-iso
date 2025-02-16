@@ -8,8 +8,8 @@ import type {
 	Name,
 	Version,
 	WWW,
-} from './common.ts'
-import type { IdTag, PointerTag, Tag, ValueTag } from './tags.ts'
+} from './common'
+import type { IdTag, PointerTag, Tag, ValueTag } from './tags'
 
 export type Source = ValueTag<'SOUR', 'SOURCE', string, WWW | Version | Name | Corporate>
 

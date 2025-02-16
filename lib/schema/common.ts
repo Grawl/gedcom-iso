@@ -1,4 +1,4 @@
-import type { Tag, ValueTag } from './tags.ts'
+import type { Tag, ValueTag } from './tags'
 
 export type RecordIdNumber = ValueTag<'RIN', 'REC_ID_NUMBER'>
 

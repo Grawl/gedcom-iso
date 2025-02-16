@@ -88,7 +88,8 @@ export default TypeScriptESLintConfig(
 					groups: [
 						['^node', 'globals'],
 						['^@eslint', '^eslint', 'typescript-eslint'],
-						['^@?\\w'],
+						['^@?\\w'], // other node_modules
+						['^#'],
 						['^[./]'],
 					],
 				},

@@ -1,6 +1,5 @@
-import type { RootChild } from '../../root.ts'
-
-import type { Family } from '../../family.js'
+import type { Family } from '#lib/schema/family'
+import type { RootChild } from '#lib/schema/root'
 
 const fam1: Family = {
 	type: 'FAM',

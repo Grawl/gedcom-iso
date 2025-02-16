@@ -1,6 +1,5 @@
-import type { RootChild } from '../../root.ts'
-
-import { type Individual } from '../../individual.ts'
+import { type Individual } from '#lib/schema/individual'
+import type { RootChild } from '#lib/schema/root'
 
 const indi1: Individual = {
 	type: 'INDI',

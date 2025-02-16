@@ -1,5 +1,5 @@
-import { type Change, type GedDate, type GedFile, type GedObject } from '../common.ts'
-import type { Family } from '../family.ts'
+import { type Change, type GedDate, type GedFile, type GedObject } from '#lib/schema/common'
+import type { Family } from '#lib/schema/family'
 import type {
 	Character,
 	Copyright,
@@ -8,9 +8,9 @@ import type {
 	Head,
 	Source,
 	SubmitterPointer,
-} from '../head.ts'
-import { type Individual } from '../individual.ts'
-import type { RootTag, Submitter } from '../root.ts'
+} from '#lib/schema/head'
+import { type Individual } from '#lib/schema/individual'
+import type { RootTag, Submitter } from '#lib/schema/root'
 
 const source: Source = {
 	type: 'SOUR',

@@ -6,7 +6,7 @@ import {
 	type GedType,
 	type Place,
 } from './common.js'
-import type { IdTag, PointerTag, Tag, ValueTag } from './tags.ts'
+import type { IdTag, PointerTag, Tag, ValueTag } from './tags'
 
 export type NamePrefix = ValueTag<'NPFX', 'NAME_PREFIX'>
 

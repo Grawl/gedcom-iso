@@ -1,8 +1,8 @@
 import { tokenize } from 'gedcom-latest'
-import type { Line } from 'gedcom-latest/dist/lib/tokenize.d.ts'
+import type { Line } from 'gedcom-latest/dist/lib/tokenize.d'
 import { Iso } from 'monocle-ts'
 
-import { removeSpacesFromEndOfLines } from './utils.ts'
+import { removeSpacesFromEndOfLines } from '#lib/utils'
 
 const stringToLines = (gedcom: string): Line[] =>
 	removeSpacesFromEndOfLines(gedcom)

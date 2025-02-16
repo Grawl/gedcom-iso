@@ -1,13 +1,14 @@
-import type { RootTag } from '../../root.ts'
-import { part1 } from './1.ts'
-import { part2 } from './2.ts'
-import { part3 } from './3.ts'
-import { part4 } from './4.ts'
-import { part5 } from './5.ts'
-import { part6 } from './6.ts'
-import { part7 } from './7.ts'
-import { part8 } from './8.ts'
-import { part9 } from './9.ts'
+import type { RootTag } from '#lib/schema/root'
+
+import { part1 } from './1'
+import { part2 } from './2'
+import { part3 } from './3'
+import { part4 } from './4'
+import { part5 } from './5'
+import { part6 } from './6'
+import { part7 } from './7'
+import { part8 } from './8'
+import { part9 } from './9'
 
 const GameOfThrones: RootTag = {
 	type: 'root',

@@ -1,11 +1,11 @@
 import { parse } from 'gedcom-latest'
-import type { Line } from 'gedcom-latest/dist/lib/tokenize.d.ts'
+import type { Line } from 'gedcom-latest/dist/lib/tokenize.d'
 import { Iso } from 'monocle-ts'
 import { z } from 'zod'
 
-import { gedcomLineIso } from './gedcomLineIso.ts'
-import type { RootTag } from './schema/root.ts'
-import { removeSpacesFromEndOfLines } from './utils.ts'
+import { gedcomLineIso } from '#lib/gedcomLineIso'
+import type { RootTag } from '#lib/schema/root'
+import { removeSpacesFromEndOfLines } from '#lib/utils'
 
 const baseTagSchema = z
 	.object({
