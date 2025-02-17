@@ -17,7 +17,7 @@
 		"strictNullChecks": true,
 		"moduleResolution": "bundler",
 		"rootDir": ".",
-		"allowImportingTsExtensions": true,
+		"allowImportingTsExtensions": false,
 		"paths": {
 			"#*": ["./*"]
 		}

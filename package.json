@@ -7,8 +7,10 @@
 		"node": "23.7.0"
 	},
 	"scripts": {
-		"test": "node index.test.ts",
-		"test:update-snapshot": "node --test-update-snapshots index.test.ts",
+		"test": "node --test",
+		"test:create-snapshots": "node tests/create-snapshots.ts",
+		"test:update-snapshot": "node --test --test-update-snapshots tests/samples/*.test.ts",
+		"test:snapshot": "npm run test:create-snapshots && npm run test:update-snapshot",
 		"lint:types": "tsc --noEmit",
 		"lint:eslint": "eslint .",
 		"lint:eslint:fix": "npm run lint:eslint -- --fix",
