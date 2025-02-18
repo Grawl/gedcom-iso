@@ -1,6 +1,6 @@
 import type { Gedcom, Head } from '#lib/schema/head'
 import type { Individual } from '#lib/schema/individual'
-import type { RootChild, Submitter } from '#lib/schema/root'
+import type { Submitter, TreeNode } from '#lib/schema/root'
 
 const gedcom: Gedcom = {
 	type: 'GEDC',
@@ -373,7 +373,7 @@ const indi1: Individual = {
 	],
 }
 
-export const part1: RootChild[] = [
+export const part1: TreeNode[] = [
 	head,
 	submitter,
 	indi1,

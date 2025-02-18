@@ -8,9 +8,9 @@ export type Submitter = IdTag<'SUBM', 'SUBMITTER', Name | Address>
 
 export type Trailer = Tag<'TRLR', 'TRAILER'>
 
-export type RootChild = Head | Submitter | Individual | Family | Trailer
+export type TreeNode = Head | Submitter | Individual | Family | Trailer
 
-export type RootTag = {
+export type Tree = {
 	type: 'root'
-	children: RootChild[]
+	children: TreeNode[]
 }

@@ -1,5 +1,5 @@
 import type { Family } from '#lib/schema/family'
-import type { RootChild } from '#lib/schema/root'
+import type { TreeNode } from '#lib/schema/root'
 
 const fam1: Family = {
 	type: 'FAM',
@@ -99,7 +99,7 @@ const fam1: Family = {
 	],
 }
 
-export const part7: RootChild[] = [
+export const part7: TreeNode[] = [
 	{
 		type: 'INDI',
 		data: {

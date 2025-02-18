@@ -10,7 +10,7 @@ import type {
 	SubmitterPointer,
 } from '#lib/schema/head'
 import { type Individual } from '#lib/schema/individual'
-import type { RootTag, Submitter } from '#lib/schema/root'
+import type { Submitter, Tree } from '#lib/schema/root'
 
 const source: Source = {
 	type: 'SOUR',
@@ -364,7 +364,7 @@ export const family1: Family = {
 	],
 }
 
-const Simpsons: RootTag = {
+const Simpsons: Tree = {
 	type: 'root',
 	children: [
 		head,

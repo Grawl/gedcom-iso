@@ -4,8 +4,8 @@ import { Iso } from 'monocle-ts'
 
 import { removeSpacesFromEndOfLines } from '#lib/utils'
 
-const stringToLines = (gedcom: string): Line[] =>
-	removeSpacesFromEndOfLines(gedcom)
+const rawToLines = (raw: string): Line[] =>
+	removeSpacesFromEndOfLines(raw)
 		.trim()
 		.split('\n')
 		.map(item => {
@@ -18,7 +18,7 @@ const stringToLines = (gedcom: string): Line[] =>
 		})
 		.filter(item => item !== null)
 
-const linesToString = (lines: Line[]): string =>
+const linesToRaw = (lines: Line[]): string =>
 	lines
 		/*
 		https://gedcom.io/specifications/ged551.pdf
@@ -29,4 +29,4 @@ const linesToString = (lines: Line[]): string =>
 		)
 		.join('\n')
 
-export const gedcomLineIso = new Iso<string, Line[]>(stringToLines, linesToString)
+export const gedcomLineIso = new Iso<string, Line[]>(rawToLines, linesToRaw)

@@ -4,7 +4,7 @@ import { Iso } from 'monocle-ts'
 import { z } from 'zod'
 
 import { gedcomLineIso } from '#lib/gedcomLineIso'
-import type { RootTag } from '#lib/schema/root'
+import type { Tree } from '#lib/schema/root'
 import { removeSpacesFromEndOfLines } from '#lib/utils'
 
 const baseTagSchema = z
@@ -60,17 +60,16 @@ const tagToLine = (
 	...children.flatMap(child => tagToLine(child, level + 1)),
 ]
 
-const stringToParsed = (string: string): RootTag =>
-	parse(removeSpacesFromEndOfLines(string).trim()) as RootTag
+const rawToTree = (input: string): Tree => parse(removeSpacesFromEndOfLines(input).trim()) as Tree
 
-const parsedToString = ({ children }: RootTag) =>
+const treeToRaw = ({ children }: Tree) =>
 	gedcomLineIso.from(
-		children.flatMap(unistNode => {
-			const parsed = tagSchema.safeParse(unistNode)
+		children.flatMap(treeNode => {
+			const parsed = tagSchema.safeParse(treeNode)
 			if (parsed.error) throw parsed.error
 			const { type, value, data, children } = parsed.data
 			return tagToLine({ type, value, data, children })
 		}),
 	)
 
-export const gedcomParseIso = new Iso<string, RootTag>(stringToParsed, parsedToString)
+export const gedcomTreeIso = new Iso<string, Tree>(rawToTree, treeToRaw)

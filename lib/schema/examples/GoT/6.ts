@@ -1,6 +1,6 @@
-import type { RootChild } from '#lib/schema/root'
+import type { TreeNode } from '#lib/schema/root'
 
-export const part6: RootChild[] = [
+export const part6: TreeNode[] = [
 	{
 		type: 'INDI',
 		data: {

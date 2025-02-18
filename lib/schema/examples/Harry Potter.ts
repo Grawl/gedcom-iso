@@ -1,6 +1,6 @@
 import type { Child, Family } from '#lib/schema/family'
 import type { Individual } from '#lib/schema/individual'
-import type { RootTag } from '#lib/schema/root'
+import type { Tree } from '#lib/schema/root'
 
 const ArcturusBlack: Individual = {
 	type: 'INDI',
@@ -129,7 +129,7 @@ const family: Family = {
 	],
 }
 
-const potteriana: RootTag = {
+const potteriana: Tree = {
 	type: 'root',
 	children: [
 		{

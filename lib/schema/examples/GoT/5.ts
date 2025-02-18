@@ -1,5 +1,5 @@
 import { type Individual } from '#lib/schema/individual'
-import type { RootChild } from '#lib/schema/root'
+import type { TreeNode } from '#lib/schema/root'
 
 const indi1: Individual = {
 	type: 'INDI',
@@ -115,7 +115,7 @@ const indi1: Individual = {
 	],
 }
 
-export const part5: RootChild[] = [
+export const part5: TreeNode[] = [
 	{
 		type: 'INDI',
 		data: {

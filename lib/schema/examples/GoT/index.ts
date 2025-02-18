@@ -1,4 +1,4 @@
-import type { RootTag } from '#lib/schema/root'
+import type { Tree } from '#lib/schema/root'
 
 import { part1 } from './1'
 import { part2 } from './2'
@@ -10,7 +10,7 @@ import { part7 } from './7'
 import { part8 } from './8'
 import { part9 } from './9'
 
-const GameOfThrones: RootTag = {
+const GameOfThrones: Tree = {
 	type: 'root',
 	children: [
 		...part1,
